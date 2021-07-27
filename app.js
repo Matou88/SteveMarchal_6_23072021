@@ -1,7 +1,14 @@
 const express = require('express');
+/* express est un framework basé sur node js */
+
 const bodyParser = require('body-parser');
+/* body parser nous permet d'extraire l'objet JSON des requêtes POST */
+
 const mongoose = require('mongoose');
+/* mongoose permet de se connecter à la data base Mongo Db */
+
 const path = require('path');
+
 
 const helmet = require('helmet'); 
 /* helmet est un module Node.js qui aide à sécuriser les applications «express» en définissant divers en-têtes HTTP.
@@ -27,7 +34,7 @@ const app = express();
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000 // limit each IP to 1000 requests per windowMs
+  max: 100 // limit each IP to 100 requests per windowMs
 });
 
 app.use((req, res, next) => {
@@ -36,6 +43,10 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+/* Ces headers permettent :
+d'accéder à notre API depuis n'importe quelle origine ( '*' ) ;
+d'ajouter les headers mentionnés aux requêtes envoyées vers notre API (Origin , X-Requested-With , etc.) ;
+d'envoyer des requêtes avec les méthodes mentionnées ( GET ,POST , etc.). */
 
 app.use(bodyParser.json());
 app.use(helmet());

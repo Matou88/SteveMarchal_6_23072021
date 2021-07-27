@@ -1,10 +1,11 @@
-const Sauce = require("../models/sauce");
-const fs = require("fs");
+const Sauce = require("../models/sauce"); // Importation du schéma des sauces.
+const fs = require("fs"); // Importation du module 'file system' de Node permettant de gérer les téléchargements d'images.
 
 /************ Création d'une sauce ************/
 exports.createSauce = (req, res, next) => {
-  const sauceObjet = JSON.parse(req.body.sauce);
-  delete sauceObjet._id;
+  const sauceObjet = JSON.parse(req.body.sauce); // On stocke les données envoyées par le front-end
+  delete sauceObjet._id; // Suppression de l'id envoyé par le front car MongoDb en créera un.
+  // Création d'une instance du modèle Sauce.
   const sauce = new Sauce({
       ...sauceObjet,
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
@@ -15,13 +16,13 @@ exports.createSauce = (req, res, next) => {
   });
   if(!req.body.errorMessage) {
       console.log(req.body.errorMessage)
-      sauce.save()
+      sauce.save() // Sauvegarde de la sauce dans la base de données
       .then(() => { 
-          res.status(201).json({ message: 'La sauce a été créée avec succès!' }); 
+          res.status(201).json({ message: 'La sauce a été créée avec succès!' });
       })
       .catch(error => { 
           if(error.message.indexOf("to be unique")>0) {
-              req.body.errorMessage = "Le nom de cette sauce existe déjà!";
+              req.body.errorMessage = "Le nom de cette sauce existe déjà!"; 
           }
           next();
       })

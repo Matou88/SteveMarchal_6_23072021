@@ -17,7 +17,7 @@ répétées le rendant indisponible pour ses utilisateurs prévus et le fermant 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://OCuser:nRH8WDW170kPTsvM@pekocko.arwhc.mongodb.net/pekocko?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://OCuser:nRH8WDW170kPTsvM@pekocko.arwhc.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

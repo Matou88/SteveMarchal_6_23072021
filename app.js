@@ -2,13 +2,14 @@ const express = require('express');
 /* express est un framework basé sur node js */
 
 const bodyParser = require('body-parser');
-/* body parser nous permet d'extraire l'objet JSON des requêtes POST */
+/* Pour gérer la demande POST provenant de l'application front-end, nous devrons être capables d'extraire l'objet JSON de la demande.
+body parser nous le permet */
 
 const mongoose = require('mongoose');
 /* mongoose permet de se connecter à la data base Mongo Db */
 
 const path = require('path');
-
+/*  */
 
 const helmet = require('helmet'); 
 /* helmet est un module Node.js qui aide à sécuriser les applications «express» en définissant divers en-têtes HTTP.
@@ -21,14 +22,16 @@ nous pouvons empêcher le déni de service ( DoS ) attaque . C'est le type d'att
 répétées le rendant indisponible pour ses utilisateurs prévus et le fermant finalement.
 */
 
-const sauceRoutes = require('./routes/sauce');
-const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce'); // importation des routes pour les sauces.
+const userRoutes = require('./routes/user'); // importation des routes pour les utilisateurs.
 
 mongoose.connect('mongodb+srv://OCuser:nRH8WDW170kPTsvM@pekocko.arwhc.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+/* L'API est à présent connectée à notre base de données */
 
 const app = express();
 

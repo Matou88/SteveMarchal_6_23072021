@@ -23,7 +23,10 @@ répétées le rendant indisponible pour ses utilisateurs prévus et le fermant 
 const sauceRoutes = require('./routes/sauce'); // importation des routes pour les sauces.
 const userRoutes = require('./routes/user'); // importation des routes pour les utilisateurs.
 
-mongoose.connect('mongodb+srv://OCuser:nRH8WDW170kPTsvM@pekocko.arwhc.mongodb.net/test?retryWrites=true&w=majority',
+// utilisation du module 'dotenv' pour masquer les informations de connexion à la base de données à l'aide de variables d'environnement
+require('dotenv').config();
+
+mongoose.connect(process.env.DB_URI,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

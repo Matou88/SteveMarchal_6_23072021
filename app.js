@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 /* mongoose permet de se connecter à la data base Mongo Db */
 
 const path = require('path');
+/* On importe path pour pouvoir définir le chemin vers le dossier images */
 
 const helmet = require('helmet'); 
 /* helmet est un module Node.js qui aide à sécuriser les applications «express» en définissant divers en-têtes HTTP.

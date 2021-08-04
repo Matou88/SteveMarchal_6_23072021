@@ -1,5 +1,5 @@
-const http = require('http');
-const app = require('./app');
+const http = require('http'); // importation du package http de node
+const app = require('./app'); // On importe app.js
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -12,7 +12,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000'); // Définition du port, par défaut 3000
 app.set('port', port);
 
 const errorHandler = error => {
@@ -35,7 +35,7 @@ const errorHandler = error => {
   }
 };
 
-const server = http.createServer(app);
+const server = http.createServer(app); // Méthode du server http, on lui passe la fonction app.
 
 server.on('error', errorHandler);
 server.on('listening', () => {

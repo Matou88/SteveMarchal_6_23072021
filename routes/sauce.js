@@ -1,5 +1,6 @@
 const express = require('express'); // Importation de express.
-const router = express.Router(); //Permet d'enregistrer les routes dans le routeur Express, puis enregistrer celui-ci dans l'application.
+const router = express.Router();
+//Permet d'enregistrer les routes dans le routeur Express, puis enregistrer celui-ci dans l'application.
 
 const auth = require('../middleware/auth'); // importation du middleware auth.
 const multer = require('../middleware/multer-config'); // importation du middleware multer-config.

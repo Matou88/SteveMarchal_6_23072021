@@ -1,5 +1,5 @@
 const Sauce = require("../models/sauce"); // Importation du schéma des sauces.
-const fs = require("fs"); // Importation du module 'file system' de Node permettant de gérer les téléchargements d'images.
+const fs = require("fs"); // Importation du module 'file system' de Node pour avoir accès aux différentes opérations liées au système de fichier
 
 /************ Création d'une sauce ************/
 exports.createSauce = (req, res, next) => {

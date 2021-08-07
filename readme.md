@@ -14,7 +14,13 @@ Puis lancez "npm start".
 
 
 Téléchargez ce repository,
+
 Exécutez "npm install",
+
+Créez un dossier nommé "images" à la racine,
+
+Créez un fichier .env à la racine en reprenant le fichier .env.example (mais en remplaçant "user", "password" et "dbname" par votre base de données),
+
 Puis lancez "nodemon server".
 
 
